@@ -12,7 +12,7 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', 'nuxt-vuefire'],
+  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', 'nuxt-vuefire', '@nuxt/image'],
   pinia: {
     storesDirs: ['./stores/**', './custom-folder/stores/**'],
   },

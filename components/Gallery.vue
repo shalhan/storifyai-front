@@ -5,14 +5,15 @@
           <h2 class="text-balance text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">Make Video Like These Instantly</h2>
           <p class="mt-2 text-lg/8 text-gray-600">Learn how to grow your business with our expert advice.</p>
         </div>
-        <div class="mx-auto mt-16 grid max-w-2xl auto-rows-fr grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-          <article v-for="post in posts" :key="post.id" class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80">
-            <img :src="post.imageUrl" alt="" class="absolute inset-0 -z-10 size-full object-cover" />
+        <div class="flex overflow-auto mt-16 max-w-2xl auto-rows-fr sm:mt-20 lg:mx-0 lg:max-w-none snap-x">
+          <article v-for="post in posts" :key="post.id" class="border-8 border-black mr-4 h-[720px] min-w-96 relative isolate snap-center flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80">
+            
+            <img :src="post.imageUrl" loading="lazy" alt="" class="absolute inset-0 -z-10 size-full object-cover" />
             <div class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40" />
             <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
   
             <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm/6 text-gray-300">
-              <time :datetime="post.datetime" class="mr-8">{{ post.date }}</time>
+              <!-- <time :datetime="post.datetime" class="mr-8">{{ post.date }}</time>
               <div class="-ml-4 flex items-center gap-x-4">
                 <svg viewBox="0 0 2 2" class="-ml-0.5 size-0.5 flex-none fill-white/50">
                   <circle cx="1" cy="1" r="1" />
@@ -21,7 +22,7 @@
                   <img :src="post.author.imageUrl" alt="" class="size-6 flex-none rounded-full bg-white/10" />
                   {{ post.author.name }}
                 </div>
-              </div>
+              </div> -->
             </div>
             <h3 class="mt-3 text-lg/6 font-semibold text-white">
               <a :href="post.href">
@@ -39,52 +40,21 @@
   const posts = [
     {
       id: 1,
-      title: 'Boost your conversion rate',
-      href: '#',
-      description:
-        'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
-      imageUrl:
-        'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80',
-      date: 'Mar 16, 2020',
-      datetime: '2020-03-16',
-      author: {
-        name: 'Michael Foster',
-        imageUrl:
-          'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-      },
+      title: 'Poor Kitty Car Accident AI Story',
+      href: 'https://www.youtube.com/shorts/H84nr7VDEPU',
+      imageUrl: 'https://svjloyeqxvedmqqx.public.blob.vercel-storage.com/example1-MixWIp991dgqJ9Kj3UKY4o9616M3zz.gif',
     },
     {
       id: 2,
-      title: 'Boost your conversion rate',
-      href: '#',
-      description:
-        'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
-      imageUrl:
-        'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80',
-      date: 'Mar 16, 2020',
-      datetime: '2020-03-16',
-      author: {
-        name: 'Michael Foster',
-        imageUrl:
-          'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-      },
+      title: 'Cat Stuck In Flight Accident 😢',
+      href: 'https://www.youtube.com/shorts/NuhSSUo3S7w',
+      imageUrl:'https://svjloyeqxvedmqqx.public.blob.vercel-storage.com/example2-hsSsn11ueC0FKhTzKaSWHuxkUkb4qz.gif',
     },
     {
       id: 3,
-      title: 'Boost your conversion rate',
-      href: '#',
-      description:
-        'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
-      imageUrl:
-        'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80',
-      date: 'Mar 16, 2020',
-      datetime: '2020-03-16',
-      author: {
-        name: 'Michael Foster',
-        imageUrl:
-          'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-      },
+      title: 'Happy Kid, Happy Dad❤️',
+      href: 'https://www.youtube.com/shorts/gYfPSwowQCs',
+      imageUrl: 'https://svjloyeqxvedmqqx.public.blob.vercel-storage.com/example3-DlBNPxux5bnQnTXfvvbS1zgNlQyBSC.gif',
     },
-    // More posts...
   ]
   </script>

@@ -1,6 +1,5 @@
 import { defineStore } from 'pinia'
 import { collection, addDoc } from 'firebase/firestore'
-import { Timestamp } from 'firebase/firestore'
 
 export const useWaitingListStore = defineStore('waitingList', {
     actions: {

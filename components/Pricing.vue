@@ -22,7 +22,7 @@
               {{ feature }}
             </li>
           </ul>
-          <a :href="tier.href" :aria-describedby="tier.id" :class="[tier.featured ? 'bg-indigo-500 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline-indigo-500' : 'text-indigo-600 ring-1 ring-inset ring-indigo-200 hover:ring-indigo-300 focus-visible:outline-indigo-600', 'mt-8 block rounded-md px-3.5 py-2.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 sm:mt-10']">Get started today</a>
+          <button class="cursor-pointer w-full" @click.prevent="redirect(tier.href, tier.priceMonthly)" type="button" :aria-describedby="tier.id" :class="[tier.featured ? 'bg-indigo-500 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline-indigo-500' : 'text-indigo-600 ring-1 ring-inset ring-indigo-200 hover:ring-indigo-300 focus-visible:outline-indigo-600', 'mt-8 block rounded-md px-3.5 py-2.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 sm:mt-10']">Get started today</button>
         </div>
       </div>
     </div>
@@ -31,29 +31,38 @@
   <script setup>
   import { CheckIcon } from '@heroicons/vue/20/solid'
   
+  const analyticStore = useAnalyticStore()
+
   const tiers = [
     {
-      name: 'Solo',
+      name: 'Tester',
       id: 'tier-solo',
       href: '/projects',
       priceMonthly: '$0',
       description: "The perfect plan if you're just getting started with our product.",
-      features: ['2 projects', 'Up to 20 images'],
+      features: ['200 credits (2 project)', 'Up to 20 images'],
       featured: false,
     },
     {
-      name: 'Influencer',
+      name: 'Solo',
       id: 'tier-influencer',
       href: '/projects',
-      priceMonthly: '$15',
+      priceMonthly: '$19',
       description: 'Dedicated support and infrastructure for your company.',
       features: [
-        '20 projects',
-        'Up to 300 images',
-        'First priority',
-        'Generate ideas with chat-GPT 4o',
+        '1000 credits (10 projects)',
+        'Up to 200 images',
+        'Generate ideas with chatGPT 4o',
+        'Edit scene by scene',
+        'Realistic voice over',
+        'Removed watermark',
       ],
       featured: true,
     },
   ]
+
+  async function redirect(url, price) {
+    analyticStore.event(`buy-${price}`)
+    await navigateTo('/projects')
+  }
   </script>

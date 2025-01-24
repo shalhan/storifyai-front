@@ -1,12 +1,12 @@
 <template>
-    <div class="pt-4 px-4 lg:pt-6 lg:px-8">
-        <div class="flex justify-between">
-            <div  class="flex">
+    <div class="pt-4 px-4 lg:pt-6">
+        <div class="flex flex-col sm:flex-row justify-between pl-2 sm:pl-6">
+            <div class="flex justify-between">
                 <h1 v-if="!enableRenameTitle" @click.prevent="rename" class="text-2xl font-bold tracking-tight text-gray-900">Project title...</h1>
                 <input v-else @blur="saveTitle" type="text" name="title" value="Project title..." class="block rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" autofocus />
                 <button @click="uiStore.drawerModalState = true" type="button" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 ml-4">✨ AI Assistant</button>
             </div>
-            <div>
+            <div class="mt-4 sm:mt-0">
                 <button @click="deleteProject" type="button" class="inline-flex items-center gap-x-1.5 rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-red-500 shadow-sm ring-1 ring-inset ring-red-300 hover:bg-gray-50 mr-2">
                     <FolderArrowDownIcon class="-ml-0.5 size-5" aria-hidden="true" />
                     Delete Project
@@ -18,14 +18,14 @@
             </div>
         </div>
         <div class="py-6">
-            <div id="workplace" class="scrollbar flex overflow-auto py-8 px-6">
-                <TransitionRoot v-for="(form, idx) in forms" as="template" :key="idx" name="list" tag="div" :class="idx > 0 ? 'ml-4' : ''" class="min-w-96 flex flex-col rounded-lg border border-gray-200 bg-white h-full">
+            <div id="workplace" class="scrollbar flex overflow-auto py-4 lg:py-8 lg:px-6">
+                <TransitionRoot v-for="(form, idx) in forms" as="template" :key="idx" name="list" tag="div" :class="idx > 0 ? 'ml-4' : ''" class="min-w-96 max-w-96 flex flex-col rounded-lg border border-gray-200 bg-white h-full">
                     <img src="/emptyimage.png" alt="product.imageAlt" class="w-full bg-gray-200 object-cover group-hover:opacity-75 sm:h-[720px]" />
                     <div class="flex space-y-2 p-4">
-                        <Form :idx="idx" :form="form" @remove="removeForm" @add-character="addCharacter" @generate="generate" />
+                        <Form :idx="idx" :form="form" @remove-form="removeForm" @remove-character="removeCharacter" @add-character="addCharacter" @generate="generate" />
                     </div>
                 </TransitionRoot>
-                <div class="min-w-14 flex justify-center bg-transparent item-center text-center rounded-r-full">
+                <div class="min-w-14 flex justify-center bg-transparent item-center text-center rounded-r-full sm:h-[720px]">
                     <button @click="addForm()" type="button" class="rounded-r-full bg-indigo-600 p-2 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 text-center w-14">
                         <strong class="text-4xl">+</strong>
                         <p>Add</p>
@@ -96,6 +96,13 @@
     forms.value.splice(idx, 1)
   }
 
+  function removeCharacter(formIdx, charIdx) {
+    if (forms.value[formIdx].characters.length == 1) {
+        return
+    }
+    forms.value[formIdx].characters.splice(charIdx, 1)
+  }
+
   function addCharacter(idx) {
     forms.value[idx].characters.push({ description: "", pose: "" })
   }
@@ -131,7 +138,7 @@
   }
 
   function deleteProject() {
-    analyticStore.event('deleteProject')
+    analyticStore.event('delete-project')
     uiStore.wlModalState = true
   }
 
