@@ -59,7 +59,6 @@
   </template>
   
   <script setup>
-  import { PhotoIcon, UserCircleIcon } from '@heroicons/vue/24/solid'
   import { ChevronDownIcon } from '@heroicons/vue/16/solid'
   import { PlusIcon } from '@heroicons/vue/20/solid'
   const props = defineProps(['idx', 'form'])

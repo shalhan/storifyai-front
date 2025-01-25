@@ -1,5 +1,5 @@
 <template>
-    <div class="pt-4 px-4 lg:pt-6">
+    <div class="pt-4 px-4 lg:pt-6" style="background: linear-gradient(rgba(200,200,200,.1), rgba(200,200,200,.1)), url('/bg.png')">
         <div class="flex flex-col sm:flex-row justify-between pl-2 sm:pl-6">
             <div class="flex justify-between">
                 <h1 v-if="!enableRenameTitle" @click.prevent="rename" class="text-2xl font-bold tracking-tight text-gray-900">Project title...</h1>
@@ -20,34 +20,35 @@
         <div class="py-6">
           <div id="workplace" class="scrollbar flex overflow-auto py-4 lg:py-8 lg:px-6">
               <TransitionGroup name="list">
-                <div v-for="(form, idx) in forms" :key="form" name="list" tag="div" :class="idx > 0 ? 'ml-4' : ''" class="min-w-96 max-w-96 flex flex-col rounded-lg h-full">
-                  <div :style="`background-color: ${form.setting.background}`" class="relative w-full object-cover group-hover:opacity-75 sm:h-[682px] shadow-xl" >  
+                <div v-for="(form, idx) in forms" :key="form" name="list" tag="div" :class="idx > 0 ? 'ml-4' : ''" class="min-w-96 max-w-96 flex flex-col rounded-lg h-full shadow-xl">
+                  <div :style="`background-color: ${form.setting.background}`" class="relative w-full object-cover group-hover:opacity-75 sm:h-[681px] border border-slate-300" >  
                     <img v-if="form.setting.isFull" src="/full.png" alt="product.imageAlt" />
                     <img v-else src="/half.png" alt="product.imageAlt" class="absolute top-[25%]" />
                   </div>  
-                  <div class="bg-white rounded-b-lg mt-2 shadow-xl">
-                    <button @click="toggleAccordion(idx, 1)" class="px-4 w-full border-b border-1 border-gray-200 flex justify-between items-center py-5 text-slate-800">
+                  <div class="bg-white rounded-b-lg mt-2 border border-slate-300">
+                    <span class="items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">Scene {{  idx+1  }}</span>
+                    <button @click="toggleAccordion(idx, 1)" class="px-4 w-full border-b border-gray-200 flex justify-between items-center py-5 text-slate-800">
                       <span class="font-medium">⚒️ Image Setting</span>
-                      <span :id="`icon-${idx}-1`" class="text-slate-800 transition-transform duration-300">
+                      <span :id="`icon-${idx}-1`" class="text-slate-800 transition-transform duration-400">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
                           <path fill-rule="evenodd" d="M11.78 9.78a.75.75 0 0 1-1.06 0L8 7.06 5.28 9.78a.75.75 0 0 1-1.06-1.06l3.25-3.25a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06Z" clip-rule="evenodd" />
                         </svg>
                       </span>
                     </button>
-                    <div :id="`content-${idx}-1`" class="bg-slate-100 max-h-0 overflow-hidden">
+                    <div :id="`content-${idx}-1`" class="bg-slate-100 max-h-0 overflow-hidden transition-all duration-400 ease-in-out">
                       <div class="px-4 pb-4 text-sm text-slate-500">
                         <FormImage :idx="idx" :form="form.setting" />
                       </div>
                     </div>
-                    <button @click="toggleAccordion(idx, 2)" class="px-4  w-full border-b border-1 border-gray-200 flex justify-between items-center py-5 text-slate-800">
+                    <button @click="toggleAccordion(idx, 2)" class="px-4  w-full border-b border-gray-200 flex justify-between items-center py-5 text-slate-800">
                       <span class="font-medium">💬 Image Prompt</span>
-                      <span :id="`icon-${idx}-2`" class="text-slate-800 transition-transform duration-300">
+                      <span :id="`icon-${idx}-2`" class="text-slate-800 transition-transform duration-400">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
                           <path fill-rule="evenodd" d="M11.78 9.78a.75.75 0 0 1-1.06 0L8 7.06 5.28 9.78a.75.75 0 0 1-1.06-1.06l3.25-3.25a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06Z" clip-rule="evenodd" />
                         </svg>
                       </span>
                     </button>
-                    <div :id="`content-${idx}-2`" class="bg-slate-100 max-h-0 overflow-hidden">
+                    <div :id="`content-${idx}-2`" class="bg-slate-100 max-h-0 overflow-hidden transition-all duration-400 ease-in-out">
                       <div class="px-4 pb-4 text-sm text-slate-500">
                         <FormPrompt :idx="idx" :form="form.prompt" @remove-character="removeCharacter" @add-character="addCharacter" />
                       </div>
@@ -58,7 +59,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="min-w-14 flex justify-center bg-transparent item-center text-center rounded-r-full sm:h-[682px]  shadow-xl">
+                <div class="min-w-14 flex justify-center bg-transparent item-center text-center rounded-r-full sm:h-[682px]">
                     <button @click="addForm()" type="button" class="rounded-r-full bg-indigo-600 p-2 text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 text-center w-14 shadow-md">
                         <strong class="text-4xl">+</strong>
                         <p>Add</p>
@@ -76,7 +77,7 @@
   import { FolderArrowDownIcon  } from '@heroicons/vue/24/outline'
 
   definePageMeta({
-    layout: 'app'
+    layout: 'workplace'
   })
 
   let counter = 0
@@ -207,6 +208,10 @@
     } else {
       content.style.maxHeight = 720 + 'px';
       icon.innerHTML = downSVG;
+      const workplaceDoc = document.getElementById("workplace")
+      setTimeout(() => {
+        workplaceDoc.scrollTo(workplaceDoc.scrollHeight, 0)
+      }, 100)
     }
   }
 

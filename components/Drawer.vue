@@ -27,14 +27,14 @@
                       </div>
                       <div class="flex flex-1 flex-col justify-between">
                         <div class="px-4 sm:px-6">
-                          <div class="min-h-[480px] min-w-[320px] rounded-lg py-2 px-4 mt-4 text-gray-800">
-                            <div class="bg-white border border-1 border-gray-600 px-4 py-2 rounded-3xl">
+                          <div class="min-h-[520px] min-w-[320px] rounded-lg py-2 px-4 mt-4 text-gray-800">
+                            <div class="bg-white border border-slate-200 px-4 py-2 rounded-3xl shadow-xl mb-2">
                               Hi, I'm AI assitant. 
                               I'm here to help you generate image per scene for your story line
                               Just give me title and a bit of description on what you wanna create 
                             </div>
                           </div>
-                          <div class="space-y-2 pb-5 pt-4">
+                          <div class="space-y-2 pt-2 pb-12 px-4 shadow-xl rounded-lg  border border-slate-200">
                             <div class="grid grid-cols-6 gap-x-2">
                               <div class="col-span-4">
                                 <label for="title" class="block text-sm/6 font-medium text-gray-900">Title</label>
@@ -56,13 +56,13 @@
                                 <textarea rows="3" placeholder="Describe your story plot" name="project-description" id="project-description" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                               </div>
                             </div>
+
+                            <div>
+                              <button type="submit" class="float-right inline-flex justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">✨ Generate</button>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="flex shrink-0 justify-end px-4 py-4">
-                      <button type="button" class="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" @click="uiStore.drawerModalState = false">Cancel</button>
-                      <button type="submit" class="ml-4 inline-flex justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">✨ Generate</button>
                     </div>
                   </form>
                 </DialogPanel>
