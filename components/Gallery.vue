@@ -42,19 +42,19 @@
       id: 1,
       title: 'Poor Kitty Car Accident AI Story',
       href: 'https://www.youtube.com/shorts/H84nr7VDEPU',
-      imageUrl: 'https://svjloyeqxvedmqqx.public.blob.vercel-storage.com/example1-MixWIp991dgqJ9Kj3UKY4o9616M3zz.gif',
+      imageUrl: 'https://xbgtdyebkkmvdoinsuia.supabase.co/storage/v1/object/public/storifyai-asset/0113%20(1).gif?t=2025-01-25T06%3A54%3A07.439Z',
     },
     {
       id: 2,
       title: 'Cat Stuck In Flight Accident 😢',
       href: 'https://www.youtube.com/shorts/NuhSSUo3S7w',
-      imageUrl:'https://svjloyeqxvedmqqx.public.blob.vercel-storage.com/example2-hsSsn11ueC0FKhTzKaSWHuxkUkb4qz.gif',
+      imageUrl:'https://xbgtdyebkkmvdoinsuia.supabase.co/storage/v1/object/public/storifyai-asset/0122(1).gif?t=2025-01-25T06%3A54%3A18.663Z',
     },
     {
       id: 3,
       title: 'Happy Kid, Happy Dad❤️',
       href: 'https://www.youtube.com/shorts/gYfPSwowQCs',
-      imageUrl: 'https://svjloyeqxvedmqqx.public.blob.vercel-storage.com/example3-DlBNPxux5bnQnTXfvvbS1zgNlQyBSC.gif',
+      imageUrl: 'https://xbgtdyebkkmvdoinsuia.supabase.co/storage/v1/object/public/storifyai-asset/0106.gif?t=2025-01-25T06%3A54%3A32.261Z',
     },
   ]
   </script>
