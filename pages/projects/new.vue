@@ -21,7 +21,7 @@
           <div id="workplace" class="scrollbar flex overflow-auto py-4 lg:py-8 lg:px-6">
               <TransitionGroup name="list">
                 <div v-for="(form, idx) in forms" :key="form" name="list" tag="div" :class="idx > 0 ? 'ml-4' : ''" class="min-w-96 max-w-96 flex flex-col rounded-lg h-full shadow-xl">
-                  <div :style="`background-color: ${form.setting.background}`" class="relative w-full object-cover group-hover:opacity-75 sm:h-[681px] border border-slate-300" >  
+                  <div :style="`background-color: ${form.setting.background}`" class="relative w-full object-cover group-hover:opacity-75 min-h-[681px] border border-slate-300" >  
                     <img v-if="form.setting.isFull" src="/full.png" alt="product.imageAlt" />
                     <img v-else src="/half.png" alt="product.imageAlt" class="absolute top-[25%]" />
                   </div>  
@@ -59,7 +59,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="min-w-14 flex justify-center bg-transparent item-center text-center rounded-r-full sm:h-[682px]">
+                <div class="min-w-14 flex justify-center bg-transparent item-center text-center rounded-r-full h-[681px]">
                     <button @click="addForm()" type="button" class="rounded-r-full bg-indigo-600 p-2 text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 text-center w-14 shadow-md">
                         <strong class="text-4xl">+</strong>
                         <p>Add</p>
@@ -208,10 +208,6 @@
     } else {
       content.style.maxHeight = 720 + 'px';
       icon.innerHTML = downSVG;
-      const workplaceDoc = document.getElementById("workplace")
-      setTimeout(() => {
-        workplaceDoc.scrollTo(workplaceDoc.scrollHeight, 0)
-      }, 100)
     }
   }
 

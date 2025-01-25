@@ -1,6 +1,6 @@
 <template>
     <div>
-      <div class="sticky top-0 z-9 flex items-center gap-x-6 bg-white px-4 py-4 shadow-sm sm:px-6 lg:hidden">
+      <div class="sticky top-0 z-10 flex items-center gap-x-6 bg-white px-4 py-4 shadow-sm sm:px-6 lg:hidden">
         <button type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden" @click="sidebarOpen = true">
           <span class="sr-only">Open sidebar</span>
           <Bars3Icon class="size-6" aria-hidden="true" />
