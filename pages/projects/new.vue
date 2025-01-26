@@ -26,10 +26,9 @@
               <TransitionGroup name="list">
                 <div v-for="(form, idx) in forms" :key="form" name="list" tag="div" :class="idx > 0 ? 'ml-4' : ''" class="min-w-96 max-w-96 flex flex-col rounded-lg h-full shadow-xl">
                   <div :style="`background-color: ${form.setting.background}`" class="relative w-full object-cover group-hover:opacity-75 min-h-[681px] border border-slate-300" >  
-                    <img  :src="`/test${idx+1}.jpg`" alt="product.imageAlt" style="filter:blur(10px)" class="h-[681px]"/>
+                    <img v-if="form.setting.background == 'blur'" :src="`/test${idx+1}.jpg`" alt="product.imageAlt" style="filter:blur(10px)" class="h-[681px]"/>
                     <img v-if="form.setting.isFull" src="/full.png" alt="product.imageAlt" />
-                    <!-- <img v-else src="/half.png" alt="product.imageAlt" class="absolute top-[25%]" /> -->
-                    <img v-else :src="`/test${idx+1}.jpg`" alt="product.imageAlt" class="absolute top-[25%]" />
+                    <img v-else src="/half.png" alt="product.imageAlt" class="absolute top-[25%]" />
                   </div>  
                   <div class="bg-white rounded-b-lg mt-2 border border-slate-300">
                     <span class="items-center rounded-br-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">Scene {{  idx+1  }}</span>
@@ -93,7 +92,7 @@
 
   const forms = ref([{
       setting: {
-        isFull: false,
+        isFull: true,
         background: '#0a0a0a'
       },
       prompt: {
