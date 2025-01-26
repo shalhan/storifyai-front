@@ -17,8 +17,11 @@
             </SwitchGroup>
           </div>
           <div class="col-span-3 sm:col-span-3">
-            <label v-if="!form.isFull" for="country" class="block text-sm/6 font-medium text-gray-700 mb-4">Background</label>
-            <input v-if="!form.isFull" type="color" class="p-1 h-10 w-14 block bg-white border border-gray-200 cursor-pointer rounded-lg disabled:opacity-50 disabled:pointer-events-none" id="hs-color-input" :value="form.background" @input="form.background = $event.target.value" title="Choose your color">
+            <label v-if="!form.isFull" for="country" class="block text-sm/6 font-medium text-gray-700 mb-2">Background</label>
+            <div class="flex gap-x-2 items-center">
+              <input v-if="!form.isFull" type="color" class="p-1 h-10 w-14 block bg-white border border-gray-200 cursor-pointer rounded-lg disabled:opacity-50 disabled:pointer-events-none" id="hs-color-input" :value="form.background" @input="form.background = $event.target.value" title="Choose your color">
+              <div class="bg-blue-600 hover:bg-blue-400 hover:text-gray-100 cursor-pointer w-[82px] h-[39px] rounded-lg flex items-center justify-center text-gray-50 font-medium"><div>Blur</div></div>
+            </div>
           </div>
           <div class="col-span-6 sm:col-span-4">
             <label for="country" class="block text-sm/6 font-medium text-gray-700">Effect</label>

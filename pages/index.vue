@@ -2,6 +2,7 @@
     <div>
       <Hero />
       <Gallery />
+      <Feature />
       <Pricing />
       <Footer />
     </div>

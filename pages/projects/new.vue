@@ -1,14 +1,18 @@
 <template>
     <div class="pt-4 px-4 lg:pt-6" style="background: linear-gradient(rgba(200,200,200,.1), rgba(200,200,200,.1)), url('/bg.png')">
         <div class="flex flex-col sm:flex-row justify-between pl-2 sm:pl-6">
-            <div class="flex justify-between">
+            <div class="flex justify-between items-center">
+                <a href="/projects" class="mr-2">
+                  <ArrowLongLeftIcon class="-ml-0.5 size-5" aria-hidden="true" />
+                </a>
                 <h1 v-if="!enableRenameTitle" @click.prevent="rename" class="text-2xl font-bold tracking-tight text-gray-900">Project title...</h1>
+                <!-- <h1 v-if="!enableRenameTitle" @click.prevent="rename" class="text-2xl font-bold tracking-tight text-gray-900">Project title...</h1> -->
                 <input v-else @blur="saveTitle" type="text" name="title" value="Project title..." class="block rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" autofocus />
                 <button @click="uiStore.drawerModalState = true" type="button" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 ml-4">✨ AI Assistant</button>
             </div>
             <div class="mt-4 sm:mt-0">
                 <button @click="deleteProject" type="button" class="inline-flex items-center gap-x-1.5 rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-red-500 shadow-sm ring-1 ring-inset ring-red-300 hover:bg-gray-50 mr-2">
-                    <FolderArrowDownIcon class="-ml-0.5 size-5" aria-hidden="true" />
+                    <TrashIcon class="-ml-0.5 size-5" aria-hidden="true" />
                     Delete Project
                 </button>
                 <button @click="download" type="button" class="inline-flex items-center gap-x-1.5 rounded-md bg-indigo-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
@@ -22,11 +26,13 @@
               <TransitionGroup name="list">
                 <div v-for="(form, idx) in forms" :key="form" name="list" tag="div" :class="idx > 0 ? 'ml-4' : ''" class="min-w-96 max-w-96 flex flex-col rounded-lg h-full shadow-xl">
                   <div :style="`background-color: ${form.setting.background}`" class="relative w-full object-cover group-hover:opacity-75 min-h-[681px] border border-slate-300" >  
+                    <img  :src="`/test${idx+1}.jpg`" alt="product.imageAlt" style="filter:blur(10px)" class="h-[681px]"/>
                     <img v-if="form.setting.isFull" src="/full.png" alt="product.imageAlt" />
-                    <img v-else src="/half.png" alt="product.imageAlt" class="absolute top-[25%]" />
+                    <!-- <img v-else src="/half.png" alt="product.imageAlt" class="absolute top-[25%]" /> -->
+                    <img v-else :src="`/test${idx+1}.jpg`" alt="product.imageAlt" class="absolute top-[25%]" />
                   </div>  
                   <div class="bg-white rounded-b-lg mt-2 border border-slate-300">
-                    <span class="items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">Scene {{  idx+1  }}</span>
+                    <span class="items-center rounded-br-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">Scene {{  idx+1  }}</span>
                     <button @click="toggleAccordion(idx, 1)" class="px-4 w-full border-b border-gray-200 flex justify-between items-center py-5 text-slate-800">
                       <span class="font-medium">⚒️ Image Setting</span>
                       <span :id="`icon-${idx}-1`" class="text-slate-800 transition-transform duration-400">
@@ -59,8 +65,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="min-w-14 flex justify-center bg-transparent item-center text-center rounded-r-full h-[681px]">
-                    <button @click="addForm()" type="button" class="rounded-r-full bg-indigo-600 p-2 text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 text-center w-14 shadow-md">
+                <div id="add-button" class="duration-1000 min-w-14 ml-2 flex justify-center bg-transparent item-center text-center h-[681px]">
+                    <button @click="addForm()" type="button" class="rounded-full bg-indigo-600 p-2 text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 text-center w-14 shadow-md">
                         <strong class="text-4xl">+</strong>
                         <p>Add</p>
                     </button>
@@ -74,7 +80,7 @@
   
   <script setup>
   import { ref } from 'vue'
-  import { FolderArrowDownIcon  } from '@heroicons/vue/24/outline'
+  import { FolderArrowDownIcon, TrashIcon, ArrowLongLeftIcon  } from '@heroicons/vue/24/outline'
 
   definePageMeta({
     layout: 'workplace'
@@ -87,7 +93,7 @@
 
   const forms = ref([{
       setting: {
-        isFull: true,
+        isFull: false,
         background: '#0a0a0a'
       },
       prompt: {
@@ -109,6 +115,9 @@
   })
 
   function addForm() {
+    const addBtn = document.getElementById("add-button")
+    addBtn.style.transform = "translate(100px,0)"
+
     forms.value.push({
       setting: {
         isFull: true,
@@ -121,7 +130,13 @@
         prompt: ""
       }
     })
+
+    setTimeout(() => {
+      addBtn.style.transform = "translate(0,0)"
+    }, 200)
+
     const workplaceDoc = document.getElementById("workplace")
+
     setTimeout(() => {
         workplaceDoc.scrollTo(workplaceDoc.scrollWidth, 0)
     }, 100)
@@ -131,7 +146,12 @@
     if (forms.value.length == 1) {
         return
     }
+    const addBtn = document.getElementById("add-button")
+    addBtn.style.transform = "translate(50px,0)"
     forms.value.splice(idx, 1)
+    setTimeout(() => {
+      addBtn.style.transform = "translate(0,0)"
+    }, 200)
   }
 
   function removeCharacter(formIdx, charIdx) {
@@ -234,7 +254,7 @@
     }
     .list-enter-active,
     .list-leave-active {
-      transition: all 0.5s ease;
+      transition: all 0.6s ease;
     }
     .list-enter-from,
     .list-leave-to {
