@@ -123,7 +123,6 @@
         <div class="px-4 sm:px-6 lg:px-8"> -->
       <main class="lg:pl-72 bg-gray-100">
         <div class="border-2 border-gray-400 border-dashed">
-          <Banner @open-waiting-list="onOpenWaitingList"/>
           <slot @open-waiting-list="onOpenWaitingList"/>
         </div>
       </main>
