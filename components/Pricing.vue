@@ -63,7 +63,10 @@
   ]
 
   async function redirect(url, price) {
-    analyticStore.event(`buy-${price}`)
+    gtag('event', `buy-${price}`, {
+        app_name: 'StorifyAI',
+        screen_name: 'Home'
+    })
     await navigateTo('/projects')
   }
   </script>

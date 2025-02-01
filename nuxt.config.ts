@@ -12,7 +12,7 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', 'nuxt-vuefire', '@nuxt/image'],
+  modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', 'nuxt-vuefire', '@nuxt/image', 'nuxt-gtag'],
   pinia: {
     storesDirs: ['./stores/**', './custom-folder/stores/**'],
   },
@@ -27,4 +27,8 @@ export default defineNuxtConfig({
       measurementId: process.env.MEASUREMENT_ID
     },
   },
+  gtag: {
+    enabled: process.env.NODE_ENV === 'production',
+    id: process.env.MEASUREMENT_ID
+  }
 })

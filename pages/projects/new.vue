@@ -107,6 +107,8 @@
 
   const uiStore = useUIStore()
 
+  const { gtag } = useGtag()
+
   const analyticStore = useAnalyticStore()
 
   onMounted(() => {
@@ -188,17 +190,26 @@
   }
 
   function generate(idx) {
-    analyticStore.event('generate')
+    gtag('event', 'generate', {
+        app_name: 'StorifyAI',
+        screen_name: 'New Project'
+    })
     uiStore.wlModalState = true
   }
 
   function download() {
-    analyticStore.event('download')
+    gtag('event', 'download', {
+        app_name: 'StorifyAI',
+        screen_name: 'New Project'
+    })
     uiStore.wlModalState = true
   }
 
   function deleteProject() {
-    analyticStore.event('delete-project')
+    gtag('event', 'delete-project', {
+        app_name: 'StorifyAI',
+        screen_name: 'New Project'
+    })
     uiStore.wlModalState = true
   }
 

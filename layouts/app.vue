@@ -153,6 +153,9 @@
 
   function onOpenWaitingList() {
     uiStore.wlModalState = true
-    analyticStore.event('waiting-list')
+    gtag('event', 'waiting-list', {
+        app_name: 'StorifyAI',
+        screen_name: 'New Project'
+    })
   }
   </script>
